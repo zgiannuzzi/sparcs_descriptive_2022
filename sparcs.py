@@ -93,38 +93,38 @@ age_0 = df.loc[df['age_group'].isin(['0 to 17'])]
 age_0['total_costs']
 convert_total_cost_age_0 = age_0['total_costs'].apply(lambda x : x.replace(',',''))
 convert_total_cost_age_0 = pd.to_numeric(convert_total_cost_age_0,errors = 'coerce')
-convert_total_cost_age_0.sum()
+
 
 age_18 = df.loc[df['age_group'].isin(['18 to 29'])]
 age_18['total_costs']
 convert_total_cost_age_18 = age_18['total_costs'].apply(lambda x : x.replace(',',''))
 convert_total_cost_age_18 = pd.to_numeric(convert_total_cost_age_18,errors = 'coerce')
-convert_total_cost_age_18.sum()
+
 
 
 age_30 = df.loc[df['age_group'].isin(['30 to 49'])]
 age_30['total_costs']
 convert_total_cost_age_30 = age_30['total_costs'].apply(lambda x : x.replace(',',''))
 convert_total_cost_age_30 = pd.to_numeric(convert_total_cost_age_30,errors = 'coerce')
-convert_total_cost_age_30.sum()
+
 
 age_50 = df.loc[df['age_group'].isin(['50 to 69'])]
 age_50['total_costs']
 convert_total_cost_age_50 = age_50['total_costs'].apply(lambda x : x.replace(',',''))
 convert_total_cost_age_50 = pd.to_numeric(convert_total_cost_age_50,errors = 'coerce')
-convert_total_cost_age_50.sum()
+
 
 age_70 = df.loc[df['age_group'].isin(['70 or Older'])]
 age_70['total_costs']
 convert_total_cost_age_70 = age_70['total_costs'].apply(lambda x : x.replace(',',''))
 convert_total_cost_age_70 = pd.to_numeric(convert_total_cost_age_70,errors = 'coerce')
-convert_total_cost_age_70.sum()
 
-print(convert_total_cost_age_0.sum())
-print(convert_total_cost_age_18.sum())
-print(convert_total_cost_age_30.sum())
-print(convert_total_cost_age_50.sum())
-print(convert_total_cost_age_70.sum())
+
+print(convert_total_cost_age_0.mean())
+print(convert_total_cost_age_18.mean())
+print(convert_total_cost_age_30.mean())
+print(convert_total_cost_age_50.mean())
+print(convert_total_cost_age_70.mean())
 
 
 print(age_0['type_of_admission'].value_counts())
