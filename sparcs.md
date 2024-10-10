@@ -115,10 +115,67 @@ df['race'].isna().sum()
 ```
 # Step 7 Summary Report:
 
-Write a brief summary of your findings in the notebook:
-What is the average length of stay?
-How does the total cost vary by age group or type of admission?
-Any noticeable trends in admissions or charges?
-
+- Write a brief summary of your findings
+- Was able to seperate the data by age and do some analysis
+- What is the average length of stay?
+  The average length of stay with my data is 6.215 days
+  ```python
+    convert_stay.mean()
+  ```
+  
+- How does the total cost vary by age group or type of admission?
+  - The code below shows me seperating the data by age group
+  - The total cost was then calulated for each age group
+  - The conclusion was that as people got older the average total charges increased.
+  - However ages 18 to 29 incured less costs on average compared to the other age groups this makes sense as most people are healthiest during that time
+  ```python
+    age_0 = df.loc[df['age_group'].isin(['0 to 17'])]
+    age_0['total_costs']
+    convert_total_cost_age_0 = age_0['total_costs'].apply(lambda x : x.replace(',',''))
+    convert_total_cost_age_0 = pd.to_numeric(convert_total_cost_age_0,errors = 'coerce')
+    
+    
+    age_18 = df.loc[df['age_group'].isin(['18 to 29'])]
+    age_18['total_costs']
+    convert_total_cost_age_18 = age_18['total_costs'].apply(lambda x : x.replace(',',''))
+    convert_total_cost_age_18 = pd.to_numeric(convert_total_cost_age_18,errors = 'coerce')
+    
+    
+    
+    age_30 = df.loc[df['age_group'].isin(['30 to 49'])]
+    age_30['total_costs']
+    convert_total_cost_age_30 = age_30['total_costs'].apply(lambda x : x.replace(',',''))
+    convert_total_cost_age_30 = pd.to_numeric(convert_total_cost_age_30,errors = 'coerce')
+    
+    
+    age_50 = df.loc[df['age_group'].isin(['50 to 69'])]
+    age_50['total_costs']
+    convert_total_cost_age_50 = age_50['total_costs'].apply(lambda x : x.replace(',',''))
+    convert_total_cost_age_50 = pd.to_numeric(convert_total_cost_age_50,errors = 'coerce')
+    
+    
+    age_70 = df.loc[df['age_group'].isin(['70 or Older'])]
+    age_70['total_costs']
+    convert_total_cost_age_70 = age_70['total_costs'].apply(lambda x : x.replace(',',''))
+    convert_total_cost_age_70 = pd.to_numeric(convert_total_cost_age_70,errors = 'coerce')
+    
+    
+    print(convert_total_cost_age_0.mean())
+    print(convert_total_cost_age_18.mean())
+    print(convert_total_cost_age_30.mean())
+    print(convert_total_cost_age_50.mean())
+    print(convert_total_cost_age_70.mean())
+  ```
+- Any noticeable trends in admissions or charges?
+  - I stuck with the age groups and compared to admissions
+  - Noticed that as people got older there were more people being admitted in the emergency department
+  - All the groups had higher rates of emergency admissions
+```python
+print(age_0['type_of_admission'].value_counts())
+print(age_18['type_of_admission'].value_counts())
+print(age_30['type_of_admission'].value_counts())
+print(age_50['type_of_admission'].value_counts())
+print(age_70['type_of_admission'].value_counts())
+```
 
 
